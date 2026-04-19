@@ -6,4 +6,4 @@ En este momento, la computadora creará automáticamente la carpeta node_modules
 
 Tambien " npm install tailwindcss @tailwindcss/vite " para cargar diseños
 
-Ejecutar " npm run dev " Una vez instaladas, ya puede lanzar el proyecto como siempre.
+Ejecutar " npm run dev " Una vez instaladas, ya puede lanzar el proyecto.
