@@ -1,10 +1,22 @@
-Ejecutar comando los comandos npm para correr el programa en su computadora, 
+Ejecucion de comandos para correr el programa en su computadora 
 
-Ejecutar " npm install " Este comando le dice a Node.js: "Lee el archivo package.json, busca todas las dependencias y descárgalas de internet".
+dentro de la carpeta backend se instalan las dependecnias
+cd backend
+npm install
+node index.js
 
-En este momento, la computadora creará automáticamente la carpeta node_modules y descargará exactamente las mismas librerías
+dentro de la carpeta vite-project 
+cd vite-project
+npm install
+npm run dev
 
-Tambien " npm install tailwindcss @tailwindcss/vite " para cargar diseños
+en la carpeta Backend hay un archivo llamado .env que contiene lo siguiente
 
-Ejecutar " npm run dev " Una vez instaladas, ya puede lanzar el proyecto.
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=postgres
+DB_PASSWORD=tu_contraseña
+DB_NAME=FinanzasDB
+PORT=3000
 
+Modifica los datos segun el postgreeSql de tu computadora. 
