@@ -6,6 +6,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const transaccionesRouter = require('./routes/transacciones');
+app.use('/api/transacciones', transaccionesRouter);
+
+const authRouter = require('./routes/auth');
+app.use('/api/auth', authRouter);
+
 app.get('/', (req, res) => {
     res.json({ mensaje: 'Backend FinanzasP funcionando ✅' });
 });

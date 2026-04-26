@@ -9,4 +9,12 @@ const pool = new Pool({
     database: process.env.DB_NAME,
 });
 
+pool.query('SELECT NOW()', (err, res) => {
+    if (err) {
+        console.error('❌ Error conectando a la DB:', err.message);
+    } else {
+        console.log('✅ Conectado a PostgreSQL:', res.rows[0].now);
+    }
+});
+
 module.exports = pool;
