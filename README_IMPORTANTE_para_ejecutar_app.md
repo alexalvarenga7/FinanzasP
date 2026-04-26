@@ -1,14 +1,15 @@
 Ejecucion de comandos para correr el programa en su computadora 
+ejecuta en tu computadora los comandos que estan entre comillas
 
-dentro de la carpeta backend se instalan las dependecnias
-cd backend
-npm install
-node index.js
+dentro de la carpeta backend se instalan las dependencias
+" cd backend "
+" npm install "
+" node index.js "
 
 dentro de la carpeta vite-project 
-cd vite-project
-npm install
-npm run dev
+" cd vite-project "
+" npm install "
+" npm run dev "
 
 en la carpeta Backend hay un archivo llamado .env que contiene lo siguiente
 
