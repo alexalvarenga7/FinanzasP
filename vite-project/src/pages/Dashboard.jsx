@@ -3,6 +3,7 @@ import { getTransacciones } from '../services/Api';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 
 export default function Dashboard() {
+  const usuario = JSON.parse(localStorage.getItem('usuario'));
   const [transacciones, setTransacciones] = useState([]);
 
   useEffect(() => {
@@ -23,37 +24,37 @@ export default function Dashboard() {
     fecha: new Date(t.fecha).toLocaleDateString('es-HN'),
     monto: t.tipo === 'ingreso' ? parseFloat(t.monto) : -parseFloat(t.monto),
   }));
-const exportarCSV = () => {
-  const encabezado = ['ID', 'Descripcion', 'Monto', 'Tipo', 'Fecha'];
-  const filas = transacciones.map(t => [
-    t.id,
-    t.descripcion,
-    t.monto,
-    t.tipo,
-    new Date(t.fecha).toLocaleDateString('es-HN')
-  ]);
+  const exportarCSV = () => {
+    const encabezado = ['ID', 'Descripcion', 'Monto', 'Tipo', 'Fecha'];
+    const filas = transacciones.map(t => [
+      t.id,
+      t.descripcion,
+      t.monto,
+      t.tipo,
+      new Date(t.fecha).toLocaleDateString('es-HN')
+    ]);
 
-  const contenido = [encabezado, ...filas].map(f => f.join(',')).join('\n');
-  const blob = new Blob([contenido], { type: 'text/csv;charset=utf-8;' });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = 'transacciones.csv';
-  link.click();
-};
-<button
-  onClick={exportarCSV}
-  className="bg-brand text-white px-6 py-2 rounded-lg font-medium hover:bg-indigo-700 transition-colors"
->
-  + Exportar CSV
-</button>
+    const contenido = [encabezado, ...filas].map(f => f.join(',')).join('\n');
+    const blob = new Blob([contenido], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'transacciones.csv';
+    link.click();
+  };
+  <button
+    onClick={exportarCSV}
+    className="bg-brand text-white px-6 py-2 rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+  >
+    + Exportar CSV
+  </button>
 
   return (
     <main className="flex-1 p-8 md:p-12">
       <header className="flex justify-between items-center mb-8">
         <div>
           <h1 className="text-3xl font-bold text-text-title">Dashboard</h1>
-          <p className="text-slate-500"> Bienvenido</p>
+          <p className="text-slate-500">Bienvenido, {usuario?.nombre}.</p>
         </div>
         <button
           onClick={exportarCSV}
@@ -75,13 +76,13 @@ const exportarCSV = () => {
           <p className="text-sm text-slate-400 mb-1">Total Ingresos</p>
           <p className="text-2xl font-bold text-green-500">
             + L. {saldo.toLocaleString('es-HN', { minimumFractionDigits: 2 })}
-            </p>
+          </p>
         </div>
         <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
           <p className="text-sm text-slate-400 mb-1">Total Gastos</p>
           <p className="text-2xl font-bold text-red-500">
             -  L. {saldo.toLocaleString('es-HN', { minimumFractionDigits: 2 })}
-            </p>
+          </p>
         </div>
       </div>
 
