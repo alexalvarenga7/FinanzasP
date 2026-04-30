@@ -55,22 +55,22 @@ export default function Login({ onLogin }) {
           className="border border-slate-200 rounded-xl p-3 w-full mb-4"
         />
         <div className="relative mb-4">
-        <input
+          <input
             type={verPassword ? 'text' : 'password'}
             placeholder="Contraseña"
             value={form.password}
             onChange={e => setForm({ ...form, password: e.target.value })}
             className="border border-slate-200 rounded-xl p-3 w-full"
-        />
-        <button
+          />
+          <button
             onClick={() => setVerPassword(!verPassword)}
             className="absolute right-3 top-3 text-slate-400 hover:text-slate-600"
-        >
+          >
             {verPassword ? 'ocultar' : 'ver'}
-        </button>
+          </button>
         </div>
 
-        {error && <p className="text-sm text-red-500 mb-4">{error}</p>}
+        {error && <p className="text-sm text-green-500 mb-4">{error}</p>}
 
         <button
           onClick={handleSubmit}
